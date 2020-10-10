@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/add_record_style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Simple Thoughts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Back <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Our Misson</h1>
+        <hr>
+        <p>At Simple Thoughts we are trying to help patients of cognitive behavioral therapy (CBT) be able to create and store new simple thought records, anywhere, anytime and have more access to their therapist without always needing to schedule a session.</p>
+        <p>Simple thought records are a common tool of CBT. The goal of a simple thought record is to condition the brain to think in new, less distorted ways. When we say distorted we are refereing to cognitive distortions. These are different ways the brain can warp situations that tend to not follow reality. Through repeated use of the simple thought record patterns emerge and with the help and feedback of their therapist, patients can start to make the necessary adjustments to recondition their thoughts to a healthier state.</p>
+        <p>By allowing patients to have a digital space to house all their simple thought records and then share those records with their therapist. There is also a messaging system so that patients and therapists can be in more regular contact than just the standard sessions.</p>    
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit A Record</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Simple Thoughts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/our_mission">Our Mission <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/patient_mailbox">My Message Inbox</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/add_a_record">Add a New Record</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/patient_dashboard">Back</a>
+                </li>        
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container">
+        <div class="header">
+            <h2>Edit your thought record here:</h2>
+        </div>
+        <form id="edit_record" action="/update/{{ record.id }}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="situation">Situation: What happened? Where? When? Who with? How?</label>
+                <textarea name="situation" id="situation" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="emotion">Emotion: What emotion did I feel at that time? What else? How intense was it?</label>
+                <textarea name="emotion" id="emotion" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="negative_thought">Negative Thought: What went through my mind? What disturbed me? What did those thoughts/images/memories mean to me, or say about me or the situation? What am I responding to? What ‘button’ is this pressing for me? What would be the worst thing about that, or that could happen? Do I think I’m being treated unfairly? Am I thinking that I won’t stand for it and I must do something about it? (this is where using cognative distortions can be very helpful. <a href="https://healthibrain.com/wp-content/uploads/2019/04/Challenge_Cog_Dist_Chart.pdf">Click here</a> for a list of cognative distortions</label>
+                <textarea name="negative_thought" id="negative_thought" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="alternative_thought">Alternative Thought: STOPP! Take a breath. Is this fact or opinion? What would someone else say about this situation? What’s the bigger picture? Is there another way of seeing it? Am I personalising what happened? How important is this? How important will this be in 6 months time? 
+                    Is my reaction in proportion to the actual event? What do I want from this situation? Is that reasonable for everyone? What advice would I give someone else in this situation?</label>
+                <textarea name="alternative_thought" id="alternative_thought" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="action_taken">Action Taken: What can I do about it? What will the consequences of my action be? Will I have any regrets later? Do what works! Act wisely. What will be most helpful for me, for others, or the situation? What could I do differently? What would be more effective?</label>
+                <textarea name="action_taken" id="action_taken" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+            <button type="submit" id="button" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+path('', views.index),
+path('login', views.login),
+path('patient_register', views.patient_register),
+path('new_patient', views.new_patient),
+path('patient_login', views.patient_login),
+path('patient_dashboard', views.patient_dashboard),
+path('therapist_register', views.therapist_register),
+path('new_therapist', views.new_therapist),
+path('therapist_login', views.therapist_login),
+path('therapist_dashboard', views.therapist_dashboard),
+path('logout', views.logout),
+path('add_a_record',views.add_a_record),
+path('create', views.create),
+path('edit/<int:Record_id>', views.edit),
+path('update/<int:Record_id>', views.update),
+path('cancel/<int:Record_id>', views.cancel),
+path('share_record/<int:Record_id>', views.share_record),
+path('view/<int:patient_id>', views.view),
+path('therapist_new_message', views.therapist_new_message),
+path('therapist_add_message', views.therapist_add_message),
+path('patient_new_message', views.patient_new_message),
+path('patient_add_message', views.patient_add_message),
+path('patient_delete/<int:msg_id>', views.patient_delete),
+path('patient_mailbox', views.patient_mailbox),
+path('therapist_mailbox', views.therapist_mailbox),
+path('our_mission', views.our_mission),
+path('contact', views.contact),
+]

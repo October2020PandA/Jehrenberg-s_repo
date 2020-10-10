@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/p_dash_style.css' %}">
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Simple Thoughts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/our_mission">Our Mission <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/patient_mailbox">My Message Inbox</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/add_a_record">Add a New Record</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">    
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container">
+        <div class="header">
+            <h1>Hi {{ Patient.first_name }}, welcome to your dashboard!</h1>
+            <hr>
+            <h2>Below you will find the home for all the thought records you create.</h2>
+            <h4>Once you have created at least one thought record you can share that record with your therapist so they can view it and give any comments or feedback.</h4>
+        </div>
+        <div class="main_body">
+            <table class="table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Situation:</th>
+                        <th>Emotion:</th>
+                        <th>Negative Thought:</th>
+                        <th>Alternative Thought:</th>
+                        <th>What Can I do:</th>
+                        <th>Options:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for records in Record %}
+                    <tr>
+                        <td>{{ records.situation }}</td>
+                        <td>{{ records.emotion }}</td>
+                        <td>{{ records.negative_thought }}</td>
+                        <td>{{ records.alternative_thought }}</td>
+                        <td>{{ records.action_taken }}</td>
+                        <td id="record_action">
+                            {% if records.share_record == False %}
+                            <a href="/share_record/{{ records.id }}">Share</a>
+                            {% endif %} 
+                            <a href="/edit/{{ records.id }}">Edit</a> 
+                            <a href="/cancel/{{ records.id }}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

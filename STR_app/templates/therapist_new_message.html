@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send a Message</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Simple Thoughts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/our_mission">Our Mission <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+            </ul>    
+            <ul class="navbar-nav ml-auto"> 
+                <li class="nav-item active">
+                    <a class="nav-link" href="/therapist_dashboard">Back</a>
+                </li>   
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+      </nav>
+    <div class="container">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="header">
+            <h2>Send a new message:</h2>
+        </div>
+        <div class="message_form">
+            <form id="therapist_message" action="/therapist_add_message" method="post">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="to patient" class="col-sm-2 col-form-label">Send To:</label>
+                    <div class="col-sm-5">    
+                        <select name="patient">
+                            {% for patient in therapist_patients %}
+                            <option value='{{patient.id}}' class="form-control">
+                                {{patient.first_name}} {{patient.last_name}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>    
+                </div>  
+                <div class="form-group row">
+                    <label for="subject" class="col-sm-2 col-form-label">Subject:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="subject">
+                    </div> 
+                </div>
+                <div class="form-group row">
+                    <label for="message_content" class="col-sm-2 col-form-label">Message:</label>
+                    <div class="col-sm-5">
+                        <textarea name="message_content" id="message_content" class="form-control" rows="4" cols="50"></textarea>
+                    </div> 
+                </div>
+                <button class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
