@@ -155,6 +155,7 @@ class Record(models.Model):
 class Message(models.Model):
     therapist = models.ForeignKey(Therapist, related_name="therapist_message", on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, related_name="patient_message", on_delete=models.CASCADE)
+    sender = models.CharField(max_length=9)
     subject = models.CharField(max_length=255)
     message_content = models.TextField(null = True)
     unread = models.BooleanField(default=True)

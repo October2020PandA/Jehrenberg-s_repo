@@ -50,15 +50,17 @@
             </thead>
             <tbody>
                 {% for msg in patient.patient_message.all  %}
+                {% if msg.sender == "therapist" %}
                 <tr>
                     <td>{{ msg.therapist.title }} {{msg.therapist.first_name }} {{ msg.therapist.last_name }}</td>
                     <td>{{ msg.subject }}</td>
                     <td>{{ msg.message_content }}</td>
                     <td>{{ msg.created_at }}</td>
                     <td><a href="/patient_delete/{{ msg.id }}">Delete</a> 
-                        <a href="/patient_new_message/{{ .id }}">Reply</a>
+                        <a href="/patient_new_message/{{ msg.id }}">Reply</a>
                     </td>
                 </tr>
+                {% endif %}
                 {% endfor %}
             </tbody>
         </table>

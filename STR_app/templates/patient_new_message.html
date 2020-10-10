@@ -51,16 +51,9 @@
             <form id="patient_message" action="/patient_add_message" method="post">
                 {% csrf_token %}
                 <div class="form-group row">
-                    <label for="to therapist" class="col-sm-2 col-form-label">Send To:</label>
+                    <label for="to therapist" class="col-sm-2 col-form-label">Send To: {{ patient.therapist.title }} {{ patient.therapist.last_name }}</label>
                     <div class="col-sm-5">    
-                        <select name="patient">
-                            {% for therapist in therapists %}
-                            <option value='{{patient.id}}' class="form-control">
-                                {{this_patient.title}} {{this_patient.last_name}}
-                            </option>
-                            {% endfor %}
-                        </select>    
-                    
+                    <input type="hidden" class="form-control" name="therapist" value="{{ patient.therapist.id }}">
                     </div>    
                 </div>  
                 <div class="form-group row">

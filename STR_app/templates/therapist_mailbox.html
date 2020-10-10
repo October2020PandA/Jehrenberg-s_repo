@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Mailbox</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/t_dash_style.css' %}">
 </head>
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="/">Simple Thoughts</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -49,16 +52,18 @@
                 </tr>
             </thead>
             <tbody>
-                {% for msg in patient.patient_message.all  %}
+                {% for msg in therapist.therapist_message.all  %}
+                {% if msg.sender == "patient" %}
                 <tr>
-                    <td>{{ msg.therapist.title }} {{msg.therapist.first_name }} {{ msg.therapist.last_name }}</td>
+                    <td>{{msg.patient.first_name }} {{ msg.patient.last_name }}</td>
                     <td>{{ msg.subject }}</td>
                     <td>{{ msg.message_content }}</td>
                     <td>{{ msg.created_at }}</td>
-                    <td><a href="/patient_delete/{{ msg.id }}">Delete</a> 
-                        <a href="/patient_new_message/{{ .id }}">Reply</a>
+                    <td><a href="/therapist_delete/{{ msg.id }}">Delete</a> 
+                        <a href="/therapist_new_message/{{ msg.id }}">Reply</a>
                     </td>
                 </tr>
+                {% endif %}
                 {% endfor %}
             </tbody>
         </table>

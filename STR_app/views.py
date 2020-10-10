@@ -176,6 +176,7 @@ def therapist_add_message(request):
         Message.objects.create(
             therapist = Therapist.objects.get(id=request.session['therapist_id']),
             patient = Patient.objects.get(id=int(request.POST['patient'])),
+            sender = "therapist",
             subject = request.POST['subject'],
             message_content = request.POST['message_content'],  
         ) 
@@ -203,6 +204,7 @@ def patient_add_message(request):
         Message.objects.create(
             therapist = Therapist.objects.get(id=int(request.POST['therapist'])),
             patient = Patient.objects.get(id=request.session['patient_id']),
+            sender = "patient",
             subject = request.POST['subject'],
             message_content = request.POST['message_content'],  
         ) 
@@ -213,7 +215,7 @@ def patient_new_message (request):
     if 'patient_id' not in request.session:
         return redirect('/')  
     context = {
-        "this_patient":Patient.objects.all()
+        'patient': Patient.objects.get(id=request.session['patient_id'])
     } 
     return render(request, 'patient_new_message.html', context)    
 
@@ -232,7 +234,7 @@ def therapist_mailbox(request):
     if 'therapist_id' not in request.session:
         return redirect('/')
     context = {
-        'Therapist': Therapist.objects.get(id=request.session['therapist_id']),
+        'therapist': Therapist.objects.get(id=request.session['therapist_id']),
     }    
     return render(request, 'therapist_mailbox.html', context)
 
