@@ -1,0 +1,163 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background-color: #f2f2f2;
+}
+
+#index_h1 {
+    margin-top: 25px;
+}
+
+.cbt_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.mission_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-bottom: 35px;
+}
+
+#p_log_h2 {
+    margin-top: 25px;
+}
+
+#p_log_button {
+    margin-left: 35%;
+}
+
+#t_log_button {
+    margin-left: 35%;
+}
+
+#p_dash_h1 {
+    margin-top: 25px;
+}
+
+#t_dash_h1 {
+    margin-top: 25px;
+}
+
+.header_add_record {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+#p_edit_h2 {
+    margin-top: 25px;
+}
+
+#contact_header {
+    margin-top: 25px;
+}
+
+#mission_h1 {
+    margin-top: 25px;
+}
+
+#p_mailbox_h1 {
+    margin-top: 25px;
+}
+
+#p_sent_header {
+    margin-top: 25px;
+}
+
+#p_a_sent {
+    margin: 10px;
+}
+
+#p_mailbox{
+    margin-top: 10px;
+}
+
+#situation, #emotion, #negative_thought, #alternative_thought, #action_taken {
+    margin-top: 10px;
+}
+
+#button_add_record {
+    margin-left: 45%;
+    margin-bottom: 35px;
+}
+
+#p_edit_button {
+    margin-left: 45%;
+    margin-bottom: 35px;
+}
+
+#t_view_h1 {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+#t_new_message_h2 {
+    margin-top: 25px;
+}
+
+#t_new_message_button {
+    margin-left: 30%;
+}
+
+#t_mailbox_h1{
+    margin-top: 25px;
+}
+
+#t_a_sent {
+    margin: 10px;
+}
+
+#t_mailbox {
+    margin-top: 10px;
+}
+
+#p_new_h1 {
+    margin-top: 25px;
+}
+
+#p_new_button {
+    margin-left: 30%;
+}
+
+#t_new_h1 {
+    margin-top: 25px;
+}
+
+#t_new_h2 {
+    margin-bottom: 15px;
+}
+
+#t_new_button {
+    margin-left: 30%;
+}
+
+#t_reg_new {
+    margin-bottom: 25px;
+}
+
+#t_sent_h1 {
+    margin-top: 25px;
+}
+
+#t_sent_table {
+    margin-top: 15px;
+}
+
+#p_new_h2 {
+    margin-top: 25px;
+}
+
+#available_therapists_h1 {
+    margin-top: 25px;
+}
+
+#available_therapists_h4 {
+    margin: 15px 0px;
+}

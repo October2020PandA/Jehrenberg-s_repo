@@ -124,6 +124,9 @@ class Therapist(models.Model):
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
     practice_name = models.CharField(max_length=255)
+    location = models.CharField(max_length=255)
+    gender = models.CharField(max_length=10)
+    accept_new_patients = models.BooleanField(default=False)
     email = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add = True)
@@ -162,3 +165,20 @@ class Message(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
     objects = MessageManager()
+
+# class Profile(models.Model):
+#     first_name: models.CharField(max_length=60)
+#     last_name: models.CharField(max_length=60)
+#     title: models.CharField(max_length=60)
+#     gender: models.CharField(max_length=60)
+
+# class Specialty(models.Models):
+#     name:
+#     description:
+#     category:
+
+
+# class Doctor(models.Model):
+#     profile: models.ForeignKey(Profile, related_name="doctor_profile", on_delete=models.CASCADE)
+#     specialties: models.ForeignKey(Specialty, related_name=doctor_specialty, on_delete=models.CASCADE) related_name="doctors_specialty", on_delete=models.CASCADE)
+#     uid: models.models.IntegerField()

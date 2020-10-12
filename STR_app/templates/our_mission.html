@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Mission</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/add_record_style.css' %}">
+    <link rel="stylesheet" href="{% static 'style/css/style.css' %}">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -31,11 +34,14 @@
         </div>
     </nav>
     <div class="container">
-        <h1>Our Misson</h1>
+        <h1 id="mission_h1">Our Misson</h1>
         <hr>
         <p>At Simple Thoughts we are trying to help patients of cognitive behavioral therapy (CBT) be able to create and store new simple thought records, anywhere, anytime and have more access to their therapist without always needing to schedule a session.</p>
         <p>Simple thought records are a common tool of CBT. The goal of a simple thought record is to condition the brain to think in new, less distorted ways. When we say distorted we are refereing to cognitive distortions. These are different ways the brain can warp situations that tend to not follow reality. Through repeated use of the simple thought record patterns emerge and with the help and feedback of their therapist, patients can start to make the necessary adjustments to recondition their thoughts to a healthier state.</p>
-        <p>By allowing patients to have a digital space to house all their simple thought records and then share those records with their therapist. There is also a messaging system so that patients and therapists can be in more regular contact than just the standard sessions.</p>    
+        <p>By allowing patients to have a digital space to house all their simple thought records and then share those records with their therapist. There is also a messaging system so that patients and therapists can be in more regular contact than just the standard sessions.</p>
+        <div class="mission_img">
+            <img src="https://image.freepik.com/free-photo/therapist-talking-with-patient_23-2147990546.jpg" alt="patient with therapist"> 
+        </div>      
     </div>
 </body>
 </html>

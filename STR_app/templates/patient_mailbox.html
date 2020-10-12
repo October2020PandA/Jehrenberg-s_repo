@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Mailbox</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/p_dash_style.css' %}">
+    <link rel="stylesheet" href="{% static 'style/css/style.css' %}">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -29,7 +32,10 @@
                     <a class="nav-link" href="/add_a_record">Add a New Record</a>
                 </li>
             </ul>    
-            <ul class="navbar-nav ml-auto">    
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/patient_dashboard">Back</a>
+                </li>    
                 <li class="nav-item active">
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
@@ -37,8 +43,9 @@
         </div>
       </nav>
       <div class="container">
-        <h1>Welcome to your mailbox {{ patient.first_name }},</h1>
-        <table class="table-bordered" style="width:100%">
+        <h1 id="p_mailbox_h1">Welcome to your mailbox {{ patient.first_name }}</h1>
+        <a id="p_a_sent" href="/patient_sent">Sent Messages</a>
+        <table class="table-bordered" id="p_mailbox" style="width:100%">
             <thead>
                 <tr>
                     <th>From:</th>
@@ -57,7 +64,7 @@
                     <td>{{ msg.message_content }}</td>
                     <td>{{ msg.created_at }}</td>
                     <td><a href="/patient_delete/{{ msg.id }}">Delete</a> 
-                        <a href="/patient_new_message/{{ msg.id }}">Reply</a>
+                        <a href="/patient_new_message">Reply</a>
                     </td>
                 </tr>
                 {% endif %}

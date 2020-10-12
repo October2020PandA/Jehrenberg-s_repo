@@ -152,9 +152,11 @@ def cancel(request, Record_id):
 def view(request, patient_id):
     if 'therapist_id' not in request.session:
         return redirect('/')
+    this_therapist = Therapist.objects.filter(id=request.session['therapist_id'])    
     context = {
-        'records': Record.objects.filter(patient_with_record__id=patient_id, share_record=True)
-    }   
+        'records': Record.objects.filter(patient_with_record__id=patient_id, share_record=True),
+        'therapist_patients': this_therapist[0].patients.all(),
+        }   
     return render(request, 'view.html', context)    
 
 def share_record(request, Record_id):
@@ -243,5 +245,49 @@ def patient_delete(request, msg_id):
     to_delete.delete()
     return redirect('/patient_mailbox')
 
+def therapist_delete(request, msg_id):
+    to_delete = Message.objects.get(id=msg_id)
+    to_delete.delete()
+    return redirect('/therapist_mailbox')    
+
 def contact(request):
     return render(request, 'contact.html')
+
+def find_doctor(request):
+    return render(request, 'find_doctor.html')    
+
+def patient_sent(request):
+    if 'patient_id' not in request.session:
+        return redirect('/')
+    context = {
+        'patient': Patient.objects.get(id=request.session['patient_id'])
+    }    
+    return render(request, 'patient_sent.html', context)
+
+def therapist_sent(request):
+    if 'therapist_id' not in request.session:
+        return redirect('/')
+    context = {
+        'therapist': Therapist.objects.get(id=request.session['therapist_id'])
+    }    
+    return render(request, 'therapist_sent.html', context)
+
+def discover_yes(request, Therapist_id):
+    discover_yes = Therapist.objects.get(id=Therapist_id)
+    if discover_yes.accept_new_patients == False:   
+        discover_yes.accept_new_patients=True
+        discover_yes.save()
+    return redirect('/therapist_dashboard')
+
+def discover_no(request, Therapist_id):
+    discover_yes = Therapist.objects.get(id=Therapist_id)
+    if discover_yes.accept_new_patients == True:   
+        discover_yes.accept_new_patients=False
+        discover_yes.save()
+    return redirect('/therapist_dashboard')
+
+def discover_new_therapists(request):
+    context = {
+        'discoverable_therapists': Therapist.objects.all() 
+    }
+    return render(request, 'discover_new_therapists.html', context)                 

@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/t_dash_style.css' %}">
+    <link rel="stylesheet" href="{% static 'style/css/style.css' %}">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -40,8 +40,9 @@
         </div>
     </nav>
     <div class="container">    
-        <h1>Welcome to your mailbox {{ Therapist.title }} {{ Therapist.last_name }},</h1>
-        <table class="table-bordered" style="width:100%">
+        <h1 id="t_mailbox_h1">Welcome to your mailbox {{ Therapist.title }} {{ Therapist.last_name }},</h1>
+        <a id="t_a_sent" href="/therapist_sent">Sent Messages</a>
+        <table id="t_mailbox" class="table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>From:</th>
@@ -60,7 +61,7 @@
                     <td>{{ msg.message_content }}</td>
                     <td>{{ msg.created_at }}</td>
                     <td><a href="/therapist_delete/{{ msg.id }}">Delete</a> 
-                        <a href="/therapist_new_message/{{ msg.id }}">Reply</a>
+                        <a href="/therapist_new_message">Reply</a>
                     </td>
                 </tr>
                 {% endif %}

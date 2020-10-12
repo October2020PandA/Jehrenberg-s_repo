@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit A Record</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'style/css/style.css' %}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="/">Simple Thoughts</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -41,32 +44,32 @@
       </nav>
     <div class="container">
         <div class="header">
-            <h2>Edit your thought record here:</h2>
+            <h2 id="p_edit_h2">Edit your thought record here:</h2>
         </div>
         <form id="edit_record" action="/update/{{ record.id }}" method="post">
             {% csrf_token %}
             <div class="form-group">
                 <label for="situation">Situation: What happened? Where? When? Who with? How?</label>
-                <textarea name="situation" id="situation" class="form-control" rows="4" cols="50"></textarea>
+                <textarea name="situation" id="situation" class="form-control" rows="4" cols="50"> {{ record.situation }}</textarea>
             </div>
             <div class="form-group">
                 <label for="emotion">Emotion: What emotion did I feel at that time? What else? How intense was it?</label>
-                <textarea name="emotion" id="emotion" class="form-control" rows="4" cols="50"></textarea>
+                <textarea name="emotion" id="emotion" class="form-control" rows="4" cols="50"> {{ record.emotion }}</textarea>
             </div>
             <div class="form-group">
                 <label for="negative_thought">Negative Thought: What went through my mind? What disturbed me? What did those thoughts/images/memories mean to me, or say about me or the situation? What am I responding to? What ‘button’ is this pressing for me? What would be the worst thing about that, or that could happen? Do I think I’m being treated unfairly? Am I thinking that I won’t stand for it and I must do something about it? (this is where using cognative distortions can be very helpful. <a href="https://healthibrain.com/wp-content/uploads/2019/04/Challenge_Cog_Dist_Chart.pdf">Click here</a> for a list of cognative distortions</label>
-                <textarea name="negative_thought" id="negative_thought" class="form-control" rows="4" cols="50"></textarea>
+                <textarea name="negative_thought" id="negative_thought" class="form-control" rows="4" cols="50"> {{ record.negative_thought }}</textarea>
             </div>
             <div class="form-group">
                 <label for="alternative_thought">Alternative Thought: STOPP! Take a breath. Is this fact or opinion? What would someone else say about this situation? What’s the bigger picture? Is there another way of seeing it? Am I personalising what happened? How important is this? How important will this be in 6 months time? 
                     Is my reaction in proportion to the actual event? What do I want from this situation? Is that reasonable for everyone? What advice would I give someone else in this situation?</label>
-                <textarea name="alternative_thought" id="alternative_thought" class="form-control" rows="4" cols="50"></textarea>
+                <textarea name="alternative_thought" id="alternative_thought" class="form-control" rows="4" cols="50"> {{ record.alternative_thought }} </textarea>
             </div>
             <div class="form-group">
                 <label for="action_taken">Action Taken: What can I do about it? What will the consequences of my action be? Will I have any regrets later? Do what works! Act wisely. What will be most helpful for me, for others, or the situation? What could I do differently? What would be more effective?</label>
-                <textarea name="action_taken" id="action_taken" class="form-control" rows="4" cols="50"></textarea>
+                <textarea name="action_taken" id="action_taken" class="form-control" rows="4" cols="50"> {{ record.action_taken }} </textarea>
             </div>
-            <button type="submit" id="button" class="btn btn-primary">Update</button>
+            <button type="submit" id="p_edit_button" class="btn btn-primary">Update</button>
         </form>
     </div>
 </body>
