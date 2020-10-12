@@ -51,7 +51,7 @@ def therapist_register(request):
                 messages.error(request, value)
             return redirect('/new_therapist')
         hashed_pw = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
-        new_therapist = Therapist.objects.create(title=request.POST['title'],first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=hashed_pw)
+        new_therapist = Therapist.objects.create(title=request.POST['title'],first_name=request.POST['first_name'], last_name=request.POST['last_name'], practice_name=request.POST['practice_name'], location=request.POST['location'], gender=request.POST['gender'], email=request.POST['email'], password=hashed_pw)
         request.session['therapist_id'] = new_therapist.id
         return redirect('/therapist_dashboard')
     return redirect('/')
