@@ -252,10 +252,7 @@ def therapist_delete(request, msg_id):
 
 def contact(request):
     return render(request, 'contact.html')
-
-def find_doctor(request):
-    return render(request, 'find_doctor.html')    
-
+   
 def patient_sent(request):
     if 'patient_id' not in request.session:
         return redirect('/')
